@@ -1,0 +1,26 @@
+# Conda environment for GIWAXS analysis.
+#
+# pyFAI and fabio are best installed from conda-forge — the wheels on PyPI
+# don't always pick up the right system libraries on Linux/macOS.
+#
+# Usage:
+#   conda env create -f environment.yml
+#   conda activate giwaxs
+#   pip install -e .
+
+name: giwaxs
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.10
+  - pyFAI>=2024.1
+  - fabio>=2024.1
+  - numpy>=1.24
+  - pandas>=2.0
+  - matplotlib>=3.7
+  - scipy>=1.10
+  - jupyterlab
+  - ipykernel
+  - pip
+  - pip:
+      - -e .

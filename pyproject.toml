@@ -1,0 +1,83 @@
+[build-system]
+requires = ["setuptools>=64", "setuptools-scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "giwaxs-analysis"
+version = "0.1.0"
+description = "Tools for processing and analysing Grazing-Incidence Wide-Angle X-ray Scattering (GIWAXS) data."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Olivia Gough" },
+]
+keywords = [
+    "GIWAXS",
+    "WAXS",
+    "synchrotron",
+    "X-ray scattering",
+    "pyFAI",
+    "crystallography",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Scientific/Engineering :: Chemistry",
+]
+dependencies = [
+    "pyFAI>=2024.1",
+    "fabio>=2024.1",
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "matplotlib>=3.7",
+    "scipy>=1.10",
+]
+
+[project.optional-dependencies]
+# Optional grammar-of-graphics plotting (used in some example notebooks).
+plotnine = ["plotnine>=0.12"]
+# Optional peak-fitting backend.
+fityk = ["fityk"]
+# Everything a user might want in one go.
+all = ["plotnine>=0.12", "fityk"]
+# Development / test dependencies.
+dev = [
+    "pytest>=7",
+    "pytest-cov",
+    "ruff",
+    "jupyterlab",
+    "nbstripout",
+]
+# Documentation build dependencies (optional, for when you set up docs).
+docs = [
+    "mkdocs",
+    "mkdocs-material",
+    "mkdocstrings[python]",
+]
+
+[project.urls]
+Homepage = "https://github.com/omgough/GIWAXS_analysis"
+Repository = "https://github.com/omgough/GIWAXS_analysis"
+Issues = "https://github.com/omgough/GIWAXS_analysis/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "B"]
+ignore = ["E501"]  # line length handled by formatter

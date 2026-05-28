@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "giwaxs-analysis: Python tools for GIWAXS data processing"
+authors:
+  - family-names: Gough
+    given-names: Olivia
+    # orcid: "https://orcid.org/XXXX-XXXX-XXXX-XXXX"  # add your ORCID here
+version: 0.1.0
+date-released: 2026-05-28
+url: "https://github.com/omgough/GIWAXS_analysis"
+repository-code: "https://github.com/omgough/GIWAXS_analysis"
+license: MIT
+keywords:
+  - GIWAXS
+  - X-ray scattering
+  - synchrotron
+  - pyFAI
+  - thin films
