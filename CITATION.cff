@@ -1,14 +1,18 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite it as below."
+message: >-
+  If you use this software, please cite the associated thesis
+  (under "preferred-citation") AND the pyFAI library it builds on
+  (listed under "references"). The software entry below lets you
+  also cite this specific version if you want to.
 title: "giwaxs-analysis: Python tools for GIWAXS data processing"
 authors:
   - family-names: Gough
     given-names: Olivia
-    # orcid: "https://orcid.org/XXXX-XXXX-XXXX-XXXX"  # add your ORCID here
+    orcid: "https://orcid.org/0009-0001-2014-1471"
 version: 0.1.0
 date-released: 2026-05-28
-url: "https://github.com/omgough/GIWAXS_analysis"
-repository-code: "https://github.com/omgough/GIWAXS_analysis"
+url: "https://github.com/omgough/giwaxs-analysis"
+repository-code: "https://github.com/omgough/giwaxs-analysis"
 license: MIT
 keywords:
   - GIWAXS
@@ -16,3 +20,43 @@ keywords:
   - synchrotron
   - pyFAI
   - thin films
+
+preferred-citation:
+  type: thesis
+  title: "In situ microstructural characterisation of organic solar cells"
+  authors:
+    - family-names: Gough
+      given-names: Olivia
+      orcid: "https://orcid.org/0009-0001-2014-1471"
+  thesis-type: "DPhil thesis"
+  institution:
+    name: "University of Oxford"
+    department: "Department of Physics (Condensed Matter Physics)"
+  year: 2025
+  month: 10
+
+references:
+  - type: article
+    title: "The fast azimuthal integration Python library: pyFAI"
+    authors:
+      - family-names: Ashiotis
+        given-names: Giannis
+      - family-names: Deschildre
+        given-names: Aurore
+      - family-names: Nawaz
+        given-names: Zubair
+      - family-names: Wright
+        given-names: Jonathan P.
+      - family-names: Karkoulis
+        given-names: Dimitrios
+      - family-names: Picca
+        given-names: Frédéric Emmanuel
+      - family-names: Kieffer
+        given-names: Jérôme
+    journal: "Journal of Applied Crystallography"
+    year: 2015
+    volume: 48
+    issue: 2
+    start: 510
+    end: 519
+    doi: "10.1107/S1600576715004306"
