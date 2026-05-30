@@ -22,5 +22,7 @@ dependencies:
   - jupyterlab
   - ipykernel
   - pip
+  - "pygix",
   - pip:
       - -e .
+      - pygix

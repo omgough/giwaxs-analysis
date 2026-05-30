@@ -133,6 +133,87 @@ def cake(
     return q, chi, I_2d
 
 
+def giwaxs_reshape(
+    frame: np.ndarray,
+    calib: "Calibration",
+    *,
+    incidence_angle: float,
+    npt: tuple[int, int] = (500, 500),
+    polarization_factor: float | None = 0.99,
+    correct_solid_angle: bool = True,
+    flip_qxy: bool = True,
+    flip_qz: bool = True,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """GIWAXS reshape: detector frame → reciprocal-space (qxy, qz) map.
+
+    Uses pygix to perform the Ewald-sphere coordinate transformation
+    accounting for the grazing geometry. Unlike :func:`cake` (a polar
+    rebin that ignores sample tilt), this is the correct reshape for
+    grazing-incidence data.
+
+    Returns qxy / qz in **Å⁻¹**. With both flips True (default), the
+    output follows the standard GIWAXS plotting convention: qxy > 0
+    in-plane and qz > 0 out of the substrate.
+
+    Parameters
+    ----------
+    frame
+        2D detector image, shape ``(H, W)``.
+    calib
+        Calibration bundle.
+    incidence_angle
+        Grazing incidence angle αᵢ in **degrees** (e.g. 0.15).
+    npt
+        ``(npt_qxy, npt_qz)`` number of bins per axis.
+    polarization_factor, correct_solid_angle
+        Same conventions as :func:`azimuthal_integrate`.
+    flip_qxy, flip_qz
+        Pygix's internal axes don't match the standard GIWAXS plotting
+        convention. With both True (default) the output is flipped to
+        match convention. Toggle one or both off if your beamline's
+        geometry is mirrored.
+
+    Returns
+    -------
+    (qxy, qz, I_2d)
+        ``qxy`` shape ``(npt_qxy,)``, ``qz`` shape ``(npt_qz,)``,
+        ``I_2d`` shape ``(npt_qz, npt_qxy)``.
+    """
+    try:
+        import pygix
+    except ImportError as e:
+        raise ImportError(
+            "pygix is required for the GIWAXS reshape. "
+            "Install with `pip install pygix`."
+        ) from e
+
+    transform = pygix.Transform()
+    transform.load(str(calib.poni_path))
+    transform.incident_angle = incidence_angle
+
+    I_2d, qxy, qz = transform.transform_reciprocal(
+        frame,
+        npt=npt,
+        mask=calib.mask,
+        method="bbox",
+        polarization_factor=polarization_factor,
+        correctSolidAngle=correct_solid_angle,
+    )
+
+    # pygix returns q in nm⁻¹; convert to Å⁻¹.
+    qxy = qxy / 10.0
+    qz = qz / 10.0
+
+    if flip_qz:
+        qz = -qz[::-1]
+        I_2d = I_2d[::-1, :]
+
+    if flip_qxy:
+        qxy = -qxy[::-1]
+        I_2d = I_2d[:, ::-1]
+
+    return qxy, qz, I_2d
+
 def batch_integrate(
     stack: np.ndarray,
     calib: "Calibration",
