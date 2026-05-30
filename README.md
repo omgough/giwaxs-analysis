@@ -2,7 +2,36 @@
 
 Python tools for processing **Grazing-Incidence Wide-Angle X-ray Scattering (GIWAXS)** data - from raw detector frames through to 1D / wedge integrations, general GIWAXS data visualisation, _in situ_ heatmaps / waterfall plots, peak fitting and Scherrer crystallite-size analysis. Built on top of [pyFAI](https://pyfai.readthedocs.io/) and [fabio](https://fabio.readthedocs.io/).
 
-This package is adapted from a set of notebooks written during my DPhil, focusing on _in situ_ GIWAXS during thin film deposition using the [MINERVA chamber](https://pubs.aip.org/aip/rsi/article/88/10/103901/834213/MINERVA-A-facility-to-study-Microstructure-and)]. The hope is to make the same workflows usable for other groups working with GIWAXS data from synchrotron, particularly _in situ_ GIXD data, be it from MINERVA or otherwise. The examples given here are _in situ_ GIWAXS during thin film deposition via vacuum thermal evaporation (VTE), but can also be used for Grazing-Incidence Small-Angle X-ray Scattering (GISAXS) and any kind of _in situ_ series (_e.g._ annealing, different deposition methods, _etc._)
+This package is adapted from a set of notebooks written during my DPhil, focusing on _in situ_ GIWAXS during thin film deposition using the [MINERVA chamber](https://pubs.aip.org/aip/rsi/article/88/10/103901/834213/MINERVA-A-facility-to-study-Microstructure-and). The hope is to make the same workflows usable for other groups working with GIWAXS data from synchrotron, particularly _in situ_ GIXD data, be it from MINERVA or otherwise. The examples given here are _in situ_ GIWAXS during thin film deposition via vacuum thermal evaporation (VTE), but can also be used for Grazing-Incidence Small-Angle X-ray Scattering (GISAXS) and any kind of _in situ_ series (_e.g._ annealing, different deposition methods, _etc._)
+
+
+## Repository layout
+
+```
+giwaxs-analysis/
+├── src/giwaxs_analysis/        # the package itself
+│   ├── __init__.py
+│   ├── calibration.py          # load / validate PONI files and masks
+│   ├── io.py                   # discover and load detector frames
+│   ├── integration.py          # 1D radial / sector / cake integrations
+│   ├── plotting.py             # detector images, line cuts, heatmaps
+│   └── peak_fitting.py         # Gaussian / pseudo-Voigt fits, Scherrer
+├── notebooks/                  # runnable end-to-end examples
+│   └── 06_peak_fitting_scherrer.ipynb
+├── data/                       # small sample data for the notebooks
+│   ├── insitu/                 # mini in-situ series (thickness scan)
+│   └── README.md
+├── docs/
+│   └── calibration.md          # how to generate a .poni with pyFAI-calib2
+├── tests/
+│   └── test_imports.py
+├── pyproject.toml              # package metadata + dependencies
+├── environment.yml             # conda environment (recommended install)
+├── CITATION.cff                # how to cite this work
+├── LICENSE                     # MIT
+└── README.md
+```
+
 
 ## What's in here
 
