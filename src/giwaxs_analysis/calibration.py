@@ -107,7 +107,7 @@ def summarise(calib: Calibration) -> str:
     Useful as the first cell of a notebook to confirm you loaded the
     right calibration. Example output::
 
-        Pilatus2M  dist=152.3 mm  beam=(89.4, 92.1) mm  λ=0.9763 Å  masked=4.2%
+        Pilatus2M  dist=152.3 mm  beam=(89.4, 92.1) mm  λ=0.9763 Å  E=12.70 keV  masked=4.2%
     """
     ai = calib.integrator
 
@@ -118,11 +118,15 @@ def summarise(calib: Calibration) -> str:
     poni2_mm = ai.poni2 * 1e3
     wavelength_A = ai.wavelength * 1e10
 
+    # Photon energy via E = hc / λ.  hc in keV·Å ≈ 12.3984.
+    energy_keV = 12.3984 / wavelength_A
+
     detector_name = type(ai.detector).__name__
     masked_pct = 100 * calib.mask.sum() / calib.mask.size
 
     return (
         f"{detector_name}  dist={dist_mm:.1f} mm  "
         f"beam=({poni1_mm:.1f}, {poni2_mm:.1f}) mm  "
-        f"λ={wavelength_A:.4f} Å  masked={masked_pct:.1f}%"
+        f"λ={wavelength_A:.4f} Å  E={energy_keV:.3f} keV  "
+        f"masked={masked_pct:.1f}%"
     )
