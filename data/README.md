@@ -1,12 +1,19 @@
 # data/
 
-This folder is for **small, redistributable sample data** that makes the example notebooks runnable out of the box. Suggested contents:
+Small sample data for running the example notebooks.
 
-- One representative detector frame (a few MB, e.g. an `.edf` or `.tif`)
-- The matching `.poni` file
-- The matching mask
-- (Optional) a tiny in-situ stack (~10 frames) for the heatmap example
+## Contents
 
-If your sample data is too big to commit (> ~10 MB total), drop a `download_sample.py` script here instead that pulls from a Zenodo deposit or your group's data archive. Document the expected file layout in this README.
+- **`insitu/`** — 5 raw detector frames taken at different film thicknesses, used as a mini _in situ_ series.
+- **`calibrant.edf`** — a raw image of silver behenate (AgBh) collected on a Pilatus 2M detector. AgBh is a standard calibrant with well-known d-spacings, used to fit the detector geometry.
+- **`mask.edf`** — the corresponding detector mask. This is just a 2D array of 1s and 0s marking which pixels to ignore (dead pixels, beamstop shadow, module gaps, etc.).
+- **`calibrant.poni`** — the pyFAI geometry file (PONI = Point Of Normal Incidence) produced from the AgBh image. It's a plain text file describing the sample-detector distance, beam centre, detector tilt and wavelength.
+- **`integrations.csv`** - integrations of the example _in situ_ data.
 
-Large / raw / scratch data should **not** live here — it's `.gitignore`d. Keep that on shared storage or your beamline's data system.
+## A note on file formats
+
+Raw detector images usually come as either `.tif` or `.edf`, depending on the facility; Diamond Light Source typically writes TIFFs, ESRF typically writes EDF. Check what your beamline produces. Both are handled by `giwaxs_analysis.io`.
+
+## Generating your own
+
+The `.poni` and mask are tied to a specific beamtime — you'll need to make your own for your data. See [`docs/calibration.md`](../docs/calibration.md) for the full step-by-step using `pyFAI-calib2`.
