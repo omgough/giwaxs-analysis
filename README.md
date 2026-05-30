@@ -1,8 +1,8 @@
 # giwaxs-analysis
 
-Python tools for processing **Grazing-Incidence Wide-Angle X-ray Scattering (GIWAXS)** data — from raw detector frames through to 1D integrations, in-situ heatmaps, peak fitting and Scherrer crystallite-size analysis. Built on top of [pyFAI](https://pyfai.readthedocs.io/) and [fabio](https://fabio.readthedocs.io/).
+Python tools for processing **Grazing-Incidence Wide-Angle X-ray Scattering (GIWAXS)** data - from raw detector frames through to 1D / wedge integrations, general GIWAXS data visualisation, _in situ_ heatmaps / waterfall plots, peak fitting and Scherrer crystallite-size analysis. Built on top of [pyFAI](https://pyfai.readthedocs.io/) and [fabio](https://fabio.readthedocs.io/).
 
-This package grew out of a set of notebooks written during my PhD on perovskite/organic thin-film characterisation. The hope is to make the same workflows usable for other groups working with GIWAXS data from synchrotron and lab sources.
+This package is adapted from a set of notebooks written during my DPhil, focusing on _in situ_ GIWAXS during thin film deposition using the [MINERVA chamber](https://pubs.aip.org/aip/rsi/article/88/10/103901/834213/MINERVA-A-facility-to-study-Microstructure-and)]. The hope is to make the same workflows usable for other groups working with GIWAXS data from synchrotron, particularly _in situ_ GIXD data, be it from MINERVA or otherwise. The examples given here are _in situ_ GIWAXS during thin film deposition via vacuum thermal evaporation (VTE), but can also be used for Grazing-Incidence Small-Angle X-ray Scattering (GISAXS) and any kind of _in situ_ series (_e.g._ annealing, different deposition methods, _etc._)
 
 ## What's in here
 
@@ -10,37 +10,12 @@ This package grew out of a set of notebooks written during my PhD on perovskite/
 | --- | --- |
 | `giwaxs_analysis.calibration` | Load and validate pyFAI PONI files + detector masks |
 | `giwaxs_analysis.io` | Discover and load detector frames (EDF, TIFF, ...) |
-| `giwaxs_analysis.integration` | 1D radial, sector and cake integrations; batch-integrate in-situ stacks |
-| `giwaxs_analysis.plotting` | Detector images, q-space maps, line cuts, in-situ heatmaps |
-| `giwaxs_analysis.peak_fitting` | Peak fitting (Gaussian / pseudo-Voigt) and Scherrer analysis |
+| `giwaxs_analysis.integration` | 1D radial, sector and cake integrations; batch-integrate _in situ_ stacks |
+| `giwaxs_analysis.plotting` | Detector images, q-space maps, line cuts, _in situ_ heatmaps |
+| `giwaxs_analysis.peak_fitting` | Peak fitting (Gaussian / Lorentzian) and Scherrer analysis |
 
 End-to-end examples live in [`notebooks/`](notebooks/).
 
-## Installation
-
-The cleanest path on Linux/macOS is via conda, because pyFAI's wheels can be fiddly:
-
-```bash
-conda env create -f environment.yml
-conda activate giwaxs
-pip install -e .
-```
-
-If you'd rather stay in pure-pip land:
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -e .
-```
-
-Optional extras:
-
-```bash
-pip install -e ".[plotnine]"   # for the plotnine-based plotting helpers
-pip install -e ".[fityk]"      # for the fityk peak-fitting backend
-pip install -e ".[dev]"        # for tests / linting / jupyter
-```
 
 ## Prerequisite: calibrate your geometry
 
@@ -64,7 +39,7 @@ q, I = integration.radial_integrate(frame, calib)
 plotting.plot_1d(q, I, log_y=True)
 ```
 
-For an in-situ time series:
+For an _in situ_ time series:
 
 ```python
 paths = io.list_frames("data/insitu_scan/")
