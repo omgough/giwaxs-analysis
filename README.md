@@ -77,13 +77,15 @@ plotting.plot_heatmap(q, time=range(len(stack)), intensity_2d=I_2d)
 
 See [`notebooks/`](notebooks/) for runnable examples covering each workflow. Each notebook is self-contained and uses the helpers from this package — they're meant as both demos and copy-paste starting points.
 
-## Status
-
-Early alpha. The API surface is small and likely to change. Issues and pull requests welcome — particularly from anyone working with different detector geometries.
 
 ## Citation
 
-If you use this in published work, please cite it via the metadata in [`CITATION.cff`](CITATION.cff). GitHub will surface a "Cite this repository" button on the repo page.
+If you use this package in published work, please cite **both**:
+
+1. The associated thesis: O. Gough, *In situ microstructural characterisation of organic solar cells*, DPhil thesis, University of Oxford, 2025.
+2. The pyFAI library this package is built on — see [pyFAI's citation page](https://pyfai.readthedocs.io/en/stable/publications.html) (the JAC 2015 paper is the standard reference for azimuthal integration).
+
+Machine-readable metadata for both lives in [`CITATION.cff`](CITATION.cff); GitHub will surface a "Cite this repository" button on the repo page.
 
 ## License
 
