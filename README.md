@@ -39,7 +39,7 @@ giwaxs-analysis/
 | --- | --- |
 | `giwaxs_analysis.calibration` | Load and validate pyFAI PONI files + detector masks |
 | `giwaxs_analysis.io` | Discover and load detector frames (EDF, TIFF, ...) |
-| `giwaxs_analysis.integration` | 1D radial, sector and cake integrations; batch-integrate _in situ_ stacks |
+| `giwaxs_analysis.integration` | 1D azimuthal (full + sector) and 2D cake integrations; batch-integrate _in situ_ stacks |
 | `giwaxs_analysis.plotting` | Detector images, q-space maps, line cuts, _in situ_ heatmaps |
 | `giwaxs_analysis.peak_fitting` | Peak fitting (Gaussian / Lorentzian) and Scherrer analysis |
 
