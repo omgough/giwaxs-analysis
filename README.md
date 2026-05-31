@@ -94,3 +94,13 @@ Machine-readable metadata for both lives in [`CITATION.cff`](CITATION.cff); GitH
 ## License
 
 [MIT](LICENSE)
+
+
+## Acknowledgements
+
+This work was carried out while O. Gough was a [Wolfson-Marriott Postgraduate Scholar](https://www.wolfson.ox.ac.uk/news/wolfson-dphil-and-team-awarded-block-allocation-group-status-for-synchrotron-experiment/) at Wolfson College, Oxford, and a [UKRI studentship](https://gtr.ukri.org/projects?ref=studentship-2606412) recipient in the [Advanced Functional Materials and Devices (AFMD) group](https://www.physics.ox.ac.uk/research/group/advanced-functional-materials-and-devices-afmd-group) under the supervision of Prof. Moritz Riede.
+
+The demo data included in this repository was collected at the Advanced
+Light Source, Lawrence Berkeley National Laboratory whilst on a Doctoral Fellowship in the [Su Materials Lab](https://sumaterialslab.lbl.gov/). This research used resources of the Advanced Light Source, which is a
+DOE Office of Science User Facility under contract no. DE-AC02-05CH11231.
+O. Gough was supported in part by an ALS Doctoral Fellowship in Residence.
