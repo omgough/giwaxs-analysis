@@ -17,3 +17,12 @@ Raw detector images usually come as either `.tif` or `.edf`, depending on the fa
 ## Generating your own
 
 The `.poni` and mask are tied to a specific beamtime — you'll need to make your own for your data. See [`docs/calibration.md`](../docs/calibration.md) for the full step-by-step using `pyFAI-calib2`.
+
+## Acknowledgements
+
+This demo data used resources of the Advanced Light Source, which is a
+DOE Office of Science User Facility under contract no. DE-AC02-05CH11231.
+O. Gough was supported in part by an ALS Doctoral Fellowship in Residence.
+
+The demo data included in this repository was collected at the Advanced
+Light Source, Lawrence Berkeley National Laboratory.
