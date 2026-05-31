@@ -39,6 +39,8 @@ If you've never made a PONI file before, see [`docs/calibration.md`](docs/calibr
 
 ## Repository layout
 
+Feel free to fork this repository and edit the modules as you choose! Module names self explanatory; the most likely module you may want to change is `plotting.py` to plot the data in the style you prefer. 
+
 ```
 giwaxs-analysis/
 ├── src/giwaxs_analysis/        # the package itself
@@ -47,11 +49,15 @@ giwaxs-analysis/
 │   ├── io.py                   # discover and load detector frames
 │   ├── integration.py          # 1D radial / sector / cake integrations
 │   ├── plotting.py             # detector images, line cuts, heatmaps
-│   └── peak_fitting.py         # Gaussian / pseudo-Voigt fits, Scherrer
+│   └── peak_fitting.py         # Gaussian / Lorentzian fits, Scherrer
 ├── notebooks/                  # runnable end-to-end examples
-│   └── 06_peak_fitting_scherrer.ipynb
+│   ├── 01_check_calibration.ipynb
+│   ├── 02_plot_raw_frames.ipynb
+│   ├── 03_reciprocal_space_map.ipynb
+│   ├── 04_azimuthal_integration.ipynb
+│   └── 05_scherrer_analysis.ipynb
 ├── data/                       # small sample data for the notebooks
-│   ├── insitu/                 # mini in-situ series (thickness scan)
+│   ├── insitu/                 # mini in situ series (thickness scan)
 │   └── README.md
 ├── docs/
 │   └── calibration.md          # how to generate a .poni with pyFAI-calib2
@@ -63,6 +69,7 @@ giwaxs-analysis/
 ├── LICENSE                     # MIT
 └── README.md
 ```
+
 
 ## What's in here
 
@@ -193,4 +200,4 @@ Machine-readable metadata for both lives in [`CITATION.cff`](CITATION.cff); GitH
 
 This work was carried out while O. Gough was a [Wolfson-Marriott Postgraduate Scholar](https://www.wolfson.ox.ac.uk/news/wolfson-dphil-and-team-awarded-block-allocation-group-status-for-synchrotron-experiment/) at Wolfson College, Oxford, and a [UKRI studentship](https://gtr.ukri.org/projects?ref=studentship-2606412) recipient in the [Advanced Functional Materials and Devices (AFMD) group](https://www.physics.ox.ac.uk/research/group/advanced-functional-materials-and-devices-afmd-group) under the supervision of Prof. Moritz Riede.
 
-The demo data included in this repository was collected at the Advanced Light Source, Lawrence Berkeley National Laboratory whilst on a Doctoral Fellowship in the [Su Materials Lab](https://sumaterialslab.lbl.gov/). This research used resources of the Advanced Light Source, which is a DOE Office of Science User Facility under contract no. DE-AC02-05CH11231. O. Gough was supported in part by an ALS Doctoral Fellowship in Residence.
+The demo data included in this repository was collected at the Advanced Light Source, Lawrence Berkeley National Laboratory whilst on a Doctoral Fellowship in the [Su Materials Lab](https://sumaterialslab.lbl.gov/) under the supervision of Dr. Gregory Su. This research used resources of the Advanced Light Source, which is a DOE Office of Science User Facility under contract no. DE-AC02-05CH11231. O. Gough was supported in part by an ALS Doctoral Fellowship in Residence.

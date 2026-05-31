@@ -64,9 +64,9 @@ docs = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/omgough/GIWAXS_analysis"
-Repository = "https://github.com/omgough/GIWAXS_analysis"
-Issues = "https://github.com/omgough/GIWAXS_analysis/issues"
+Homepage = "https://github.com/omgough/giwaxs-analysis"
+Repository = "https://github.com/omgough/giwaxs-analysis"
+Issues = "https://github.com/omgough/giwaxs-analysis/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
